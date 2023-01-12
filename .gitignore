@@ -1,0 +1,7 @@
+### IntelliJ IDEA ###
+out/
+!**/src/main/**/out/
+!**/src/test/**/out/
+.idea/
+
+/skypro-hw5-Cycles_Part2.iml
