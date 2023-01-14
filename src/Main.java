@@ -22,18 +22,18 @@ public class Main {
     public static void task1() {
         System.out.println("Задача 1");
 
+        int target = 2_459_000;
         int total = 0;
         int contribution = 15_000;
         int month = 0;
 
-        while (total < 2_459_000) {
-            total = total + contribution;
+        while (total < target) {
+            total += contribution;
             month++;
             if (total >= 2_459_000) {
                 System.out.println("Месяц " + month + ", сумма накоплений равна " + total + " рублей");
             }
         }
-
         System.out.println();
     }
 
@@ -61,7 +61,6 @@ public class Main {
         for (;i>0;i--) {
             System.out.print(i + " ");
         }
-
         System.out.println();
     }
 
@@ -74,18 +73,19 @@ public class Main {
     public static void task3() {
         System.out.println("Задача 3");
 
-        int i = 0;
+        int year = 0;
+        int years = 10;
         int population = 12_000_000;
         int birthRate = 17;
         int deathRate = 8;
+        int coeff = 1_000;
+        int diff = birthRate - deathRate;
 
-        while (i<10) {
-            i++;
-            population = population + birthRate*population/1000 - deathRate*population/1000;
-            System.out.println("Год " + i + " , численность населения составляет " + population);
+        while (year<years) {
+            year++;
+            population += diff*population/coeff;
+            System.out.println("Год " + year + " , численность населения составляет " + population);
         }
-
-
         System.out.println();
     }
 
@@ -98,17 +98,16 @@ public class Main {
     public static void task4() {
         System.out.println("Задача 4");
 
-        int i = 0;
+        int month = 0;
         int total = 15_000;
         int finalSum = 12_000_000;
-        int percentPerMonth = 7;
+        double percentPerMonth = 0.07;
 
         while (total < finalSum) {
-            i++;
-            total = total + total*percentPerMonth/100;
-            System.out.println("Месяц " + i + ", сумма накоплений равна " + total + " рублей");
+            month++;
+            total += (int)(total*percentPerMonth);
+            System.out.println("Месяц " + month + ", сумма накоплений равна " + total + " рублей");
         }
-
         System.out.println();
     }
 
@@ -120,20 +119,20 @@ public class Main {
     public static void task5() {
         System.out.println("Задача 5");
 
-        int i = 0;
+        int month = 0;
         int total = 15_000;
         int finalSum = 12_000_000;
-        int percentPerMonth = 7;
+        double percentPerMonth = 0.07;
 
         while (total < finalSum) {
-            i++;
-            total = total + total*percentPerMonth/100;
-            if (i % 6 == 0) {
-                System.out.println("Месяц " + i + ", сумма накоплений равна " + total + " рублей");
+            month++;
+            total += (int) (total * percentPerMonth);
+            if (month % 6 == 0) {
+                System.out.println("Месяц " + month + ", сумма накоплений равна " + total + " рублей");
             }
-        }
 
-        System.out.println();
+            System.out.println();
+        }
     }
 
     /*
@@ -175,13 +174,25 @@ public class Main {
         System.out.println("Задача 7");
 
         int firstFriday = 4;
-        int i = 0;
+        int day = 0;
 
-        while (i < 31) {
-            i++;
-            if ((i - firstFriday) % 7 == 0) {
-                System.out.println("Сегодня пятницв, " + i + "-е число. Необходимо подготовить отчет");
+        System.out.println("Вариант 1");
+
+        while (day < 31) {
+            day++;
+            if ((day - firstFriday) % 7 == 0) {
+                System.out.println("Сегодня пятница, " + day + "-е число. Необходимо подготовить отчет");
             }
+        }
+
+        // Чем меньше итераций в цикле, тем быстрее работает код.
+
+        System.out.println("Вариант 2");
+
+        day = firstFriday;
+        while (day < 31) {
+            System.out.println("Сегодня пятница, " + day + "-е число. Необходимо подготовить отчет");
+            day+=7;
         }
         System.out.println();
     }
@@ -200,16 +211,29 @@ public class Main {
     public static void task8() {
         System.out.println("Задача 8");
 
+        System.out.println("Вариант 1");
 
     int startYear = 1823;
     int endYear = 2123;
-    int i = startYear;
+    int year = startYear;
 
-    while (i < endYear) {
-        i++;
-        if (i % 79 == 0) {
-            System.out.println(i);
+    while (year < endYear) {
+        year++;
+        if (year % 79 == 0) {
+            System.out.println(year);
         }
+    }
+
+        // Чем меньше итераций в цикле, тем быстрее работает код.
+
+        System.out.println("Вариант 2");
+
+    year = 0;
+    while (year < endYear) {
+        if (year >= startYear) {
+            System.out.println(year);
+        }
+        year+=79;
     }
 
         System.out.println();
